@@ -78,6 +78,11 @@ $arVisual = $arResult['VISUAL'];
                         </div>
                     <?php } ?>
                     <div class="intec-grid-item"></div>
+                    <?php
+                    $url = $_SERVER['REQUEST_URI'];
+                    $url = explode('?', $url);
+                    $url = $url[0];
+                    ?>
                     <?php if ($arResult['CONTACTS']['SHOW']['DESKTOP'] || $arResult['FORMS']['CALL']['SHOW']) { ?>
                         <div class="widget-information-container intec-grid-item-auto" style="flex: 1 0 auto;">
                             <div class="intec-grid intec-grid-a-v-center intec-grid-i-h-8" style="display: flex; align-content: center; justify-content: space-around;">
@@ -96,24 +101,43 @@ $arVisual = $arResult['VISUAL'];
                                         <?php include(__DIR__ . '/../../../parts/forms/call.php') ?>
                                     </div>
                                 <?php } ?>
-                                <div class="widget-contacts-container intec-grid-item-auto" style="color: #ffffff;">
-                                    <div style="margin-bottom: 5px;">
-                                        <i class="fa-solid fa-phone" style="margin-right: 7px; color:#7cc842"></i>
-                                        <a style="color: #7cc842; font-weight: 700; font-size: 1.1em;" href="tel:<?= $arContactItem['PHONE']['VALUE'] ?>" class="tel">
-                                            <span class="value"><?= $arContactItem['PHONE']['DISPLAY'] ?></span>
-                                        </a>
-                                    </div>
-                                    <div class="wrapper" style="display: flex; align-items: center;">
-                                        <i class="fa-solid fa-envelope" style="margin-right: 7px; color:#7cc842"></i>
-                                        <div class="adress" style="display: inline-block;">
-                                            <div class="adress">Юридическим лицам</div>
-                                            <a style="color: #7cc842" href="mailto:<?= $arContactItem["EMAIL"] ?>">
-                                                <span class="value"><?= $arContactItem["EMAIL"] ?></span>
+                                <?php if ($url == "/") { ?>
+                                    <div class="widget-contacts-container intec-grid-item-auto" style="color: #ffffff;">
+                                        <div style="margin-bottom: 5px;">
+                                            <i class="fa-solid fa-phone" style="margin-right: 7px; color:#7cc842"></i>
+                                            <a style="color: #7cc842; font-weight: 700; font-size: 1.1em;" href="tel:<?= $arContactItem['PHONE']['VALUE'] ?>" class="tel">
+                                                <span class="value"><?= $arContactItem['PHONE']['DISPLAY'] ?></span>
                                             </a>
                                         </div>
+                                        <div class="wrapper" style="display: flex; align-items: center;">
+                                            <i class="fa-solid fa-envelope" style="margin-right: 7px; color:#7cc842"></i>
+                                            <div class="adress" style="display: inline-block;">
+                                                <div class="adress">Юридическим лицам</div>
+                                                <a style="color: #7cc842" href="mailto:<?= $arContactItem["EMAIL"] ?>">
+                                                    <span class="value"><?= $arContactItem["EMAIL"] ?></span>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
+                                <?php } else { ?>
+                                    <div class="widget-contacts-container intec-grid-item-auto" style="color: #000000;">
+                                        <div style="margin-bottom: 5px;">
+                                            <i class="fa-solid fa-phone" style="margin-right: 7px; color:#7cc842"></i>
+                                            <a style="color: #7cc842; font-weight: 700; font-size: 1.1em;" href="tel:<?= $arContactItem['PHONE']['VALUE'] ?>" class="tel">
+                                                <span class="value"><?= $arContactItem['PHONE']['DISPLAY'] ?></span>
+                                            </a>
+                                        </div>
+                                        <div class="wrapper" style="display: flex; align-items: center;">
+                                            <i class="fa-solid fa-envelope" style="margin-right: 7px; color:#7cc842"></i>
+                                            <div class="adress" style="display: inline-block;">
+                                                <div class="adress">Юридическим лицам</div>
+                                                <a style="color: #7cc842" href="mailto:<?= $arContactItem["EMAIL"] ?>">
+                                                    <span class="value"><?= $arContactItem["EMAIL"] ?></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     <?php } ?>

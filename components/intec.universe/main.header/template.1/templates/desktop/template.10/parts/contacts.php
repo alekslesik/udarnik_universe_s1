@@ -21,21 +21,39 @@ use intec\core\helpers\Type;
             'expanded' => 'false'
         ]
     ]) ?>
-    <div class="widget-call-container intec-grid-item-auto" style="color: #ffffff; margin-bottom: 5px;">
-        <i class="fa-solid fa-location-dot" style="margin-right: 7px; color:#7cc842"></i>
-        <span class="adress"><?= $arContact['ADDRESS'] ?></span>
-    </div>
-    </i>
-    <div class="widget-call-container intec-grid-item-auto" style="color: #ffffff;">
-        <div class="wrapper" style="display: flex; align-items: center;">
-            <i class="fa-solid fa-clock" style="margin-right: 7px; color:#7cc842"></i>
-            <div class="adress" style="display: inline-block;">
-                <?php foreach ($arContact["SCHEDULE"] as $day) { ?>
-                    <div class="adress"><?= $day ?></div>
-                <? } ?>
+    <?php if ($url == "/") { ?>
+        <div class="widget-call-container intec-grid-item-auto" style="color: #ffffff; margin-bottom: 5px;">
+            <i class="fa-solid fa-location-dot" style="margin-right: 7px; color:#7cc842"></i>
+            <span class="adress"><?= $arContact['ADDRESS'] ?></span>
+        </div>
+        <div class="widget-call-container intec-grid-item-auto" style="color: #ffffff;">
+            <div class="wrapper" style="display: flex; align-items: center;">
+                <i class="fa-solid fa-clock" style="margin-right: 7px; color:#7cc842"></i>
+                <div class="adress" style="display: inline-block;">
+                    <?php foreach ($arContact["SCHEDULE"] as $day) { ?>
+                        <div class="adress"><?= $day ?></div>
+                    <? } ?>
+                </div>
             </div>
         </div>
-    </div>
+    <?php } else { ?>
+        <div class="widget-call-container intec-grid-item-auto" style="color: #000000; margin-bottom: 5px;">
+            <i class="fa-solid fa-location-dot" style="margin-right: 7px; color:#7cc842"></i>
+            <span class="adress"><?= $arContact['ADDRESS'] ?></span>
+        </div>
+        <div class="widget-call-container intec-grid-item-auto" style="color: #000000;">
+            <div class="wrapper" style="display: flex; align-items: center;">
+                <i class="fa-solid fa-clock" style="margin-right: 7px; color:#7cc842"></i>
+                <div class="adress" style="display: inline-block;">
+                    <?php foreach ($arContact["SCHEDULE"] as $day) { ?>
+                        <div class="adress"><?= $day ?></div>
+                    <? } ?>
+                </div>
+            </div>
+        </div>
+
+    <?php } ?>
+
     <div class="widget-contacts-main intec-grid intec-grid-a-v-center" data-block-action="popup.open" style="display: none;">
         <div class="widget-phone-content-wrapper intec-grid intec-grid-o-vertical">
             <?php if ($arResult['CONTACTS']['ADVANCED']) { ?>
