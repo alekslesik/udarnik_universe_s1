@@ -147,7 +147,7 @@ h1 {
 
 .my-flex-box-img li p {
     margin-left: 40px;
-    width: 70%;
+    width: 80%;
     font-size: 21px;
     line-height: 28px;
 }
