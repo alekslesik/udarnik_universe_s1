@@ -74,9 +74,9 @@
     }
 
     .my-flex-box-icons:nth-child(3) {
-        flex: 2 1 auto;
+        flex: 1 1 auto;
         text-align: center;
-        width: 40%;
+        /* width: 40%; */
     }
 
     .my-flex-box-icons:nth-child(3)>.fa-brands {
@@ -128,7 +128,7 @@
     .my-flex-box-img {
         flex: 0 1 auto;
         align-self: center;
-        width: 38%;
+        width: 25%;
     }
 
     .my-flex-box-img:nth-child(1) {
@@ -138,7 +138,7 @@
     .my-flex-box-img:nth-child(2) {}
 
     .my-flex-box-img img {
-        max-width: 340px;
+        max-width: 280px;
     }
 
     .my-flex-box-img li {
