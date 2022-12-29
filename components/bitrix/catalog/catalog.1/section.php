@@ -494,16 +494,22 @@ if ($arTags['SHOW']['MOBILE'] && $bSeo) {
                 <?php } ?>
                 <?php $APPLICATION->ShowViewContent($sTemplateId . '-description-bottom') ?>
                 <?php if ($arSection["UF_SHOW_BANNER"] != "0") { ?>
-
+                    <?php
+                    $url = $_SERVER['REQUEST_URI'];
+                    $url = explode('?', $url);
+                    $url = $url[0];
+                    ?>
                     <?php $this->SetViewTarget($sTemplateId . '-description-top') ?>
                     <div class="<?= Html::cssClassFromArray([
                                     'catalog-description',
                                     'catalog-description-top',
                                     'intec-ui-markup-text'
                                 ]) ?>">
-                        <? include(__DIR__ . '/parts/banner.php'); ?>
-                        <? //= !empty($arSeo) && !empty($arSeo['META']['descriptionTop']) ? $arSeo['META']['descriptionTop'] : $arDescription['VALUE']
-                        ?>
+                        <?php if ($url == "/catalog/remont_instrumenta/") { ?>
+                        <? include(__DIR__ . '/parts/banner_remont_unstrumenta.php'); ?>
+                        <?php } else { ?>
+                        <? include(__DIR__ . '/parts/banner_usluga.php'); ?>
+                        <?php } ?>
                         <? include(__DIR__ . '/parts/description.php'); ?>
                     </div>
                     <?php $this->EndViewTarget() ?>
