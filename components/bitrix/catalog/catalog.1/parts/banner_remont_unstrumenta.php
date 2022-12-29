@@ -56,6 +56,7 @@
         justify-content: space-between;
         align-items: end;
         height: 65px;
+        margin-bottom: 100px;
     }
 
     .my-flex-box-icons {

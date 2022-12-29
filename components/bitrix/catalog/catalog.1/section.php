@@ -509,8 +509,9 @@ if ($arTags['SHOW']['MOBILE'] && $bSeo) {
                         <? include(__DIR__ . '/parts/banner_remont_unstrumenta.php'); ?>
                         <?php } else { ?>
                         <? include(__DIR__ . '/parts/banner_usluga.php'); ?>
-                        <?php } ?>
                         <? include(__DIR__ . '/parts/description.php'); ?>
+                        <?php } ?>
+
                     </div>
                     <?php $this->EndViewTarget() ?>
                 <?php } ?>
