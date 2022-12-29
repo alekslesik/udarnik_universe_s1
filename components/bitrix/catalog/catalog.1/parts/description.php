@@ -20,6 +20,10 @@
         width: 107%;
     }
 
+    .-img::after {
+        height: 420px;
+    }
+
     .my-flex-box {
         flex: 0 1 auto;
     }

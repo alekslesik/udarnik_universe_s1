@@ -511,7 +511,6 @@ if ($arTags['SHOW']['MOBILE'] && $bSeo) {
                         <? include(__DIR__ . '/parts/banner_usluga.php'); ?>
                         <? include(__DIR__ . '/parts/description.php'); ?>
                         <?php } ?>
-
                     </div>
                     <?php $this->EndViewTarget() ?>
                 <?php } ?>
