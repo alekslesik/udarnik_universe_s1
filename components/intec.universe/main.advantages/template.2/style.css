@@ -31,4 +31,14 @@
   text-decoration: none;
 }
 
+.wrapper-widget-element-counter {
+  display: block;
+  background-color: #7cc842;
+  border-radius: 50px;
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  padding: 3px 0px 0px 10px;
+  font-size: 50px;
+}
 /*# sourceMappingURL=style.css.map */

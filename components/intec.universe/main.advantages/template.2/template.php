@@ -50,83 +50,85 @@ $iCount = 0;
                         ]
                     ]
                 ]) ?>
-                    <?php foreach ($arResult ['ITEMS'] as $arItem) {
-                        $sId = $sTemplateId.'_'.$arItem['ID'];
-                        $sAreaId = $this->GetEditAreaId($sId);
-                        $this->AddEditAction($sId, $arItem['EDIT_LINK']);
-                        $this->AddDeleteAction($sId, $arItem['DELETE_LINK']);
+                <?php foreach ($arResult['ITEMS'] as $arItem) {
+                    $sId = $sTemplateId . '_' . $arItem['ID'];
+                    $sAreaId = $this->GetEditAreaId($sId);
+                    $this->AddEditAction($sId, $arItem['EDIT_LINK']);
+                    $this->AddDeleteAction($sId, $arItem['DELETE_LINK']);
 
-                        $sTag = !empty($arItem['DATA']['LINK']) ? 'a' : 'div';
-                        $sPicture = null;
+                    $sTag = !empty($arItem['DATA']['LINK']) ? 'a' : 'div';
+                    $sPicture = null;
 
-                        if ($arVisual['VIEW'] === 'icon') {
-                            $sPicture = $arItem['PREVIEW_PICTURE'];
+                    if ($arVisual['VIEW'] === 'icon') {
+                        $sPicture = $arItem['PREVIEW_PICTURE'];
 
-                            if (empty($sPicture))
-                                $sPicture = $arItem['DETAIL_PICTURE'];
+                        if (empty($sPicture))
+                            $sPicture = $arItem['DETAIL_PICTURE'];
 
-                            if (!empty($sPicture)) {
-                                $sPicture = CFile::ResizeImageGet($sPicture, [
-                                    'width' => 160,
-                                    'height' => 160
-                                ], BX_RESIZE_IMAGE_PROPORTIONAL);
+                        if (!empty($sPicture)) {
+                            $sPicture = CFile::ResizeImageGet($sPicture, [
+                                'width' => 160,
+                                'height' => 160
+                            ], BX_RESIZE_IMAGE_PROPORTIONAL);
 
-                                if (!empty($sPicture))
-                                    $sPicture = $sPicture['src'];
-                            }
-
-                            if (empty($sPicture))
-                                $sPicture = SITE_TEMPLATE_PATH.'/images/picture.missing.png';
+                            if (!empty($sPicture))
+                                $sPicture = $sPicture['src'];
                         }
 
-                        $iCount++;
+                        if (empty($sPicture))
+                            $sPicture = SITE_TEMPLATE_PATH . '/images/picture.missing.png';
+                    }
 
-                    ?>
-                        <?= Html::beginTag('div', [
-                            'class' => Html::cssClassFromArray([
-                                'intec-grid-item' => [
-                                    $arVisual['COLUMNS'] => true,
-                                    '1150-4' => $arVisual['COLUMNS'] >= 5,
-                                    '900-3' => $arVisual['COLUMNS'] >= 4,
-                                    '750-2' => $arVisual['COLUMNS'] >= 3,
-                                    '500-1' => $arVisual['COLUMNS'] >= 2
-                                ]
-                            ], true)
-                        ]) ?>
-                            <div class="widget-element" id="<?= $sAreaId ?>">
-                                <?php if ($sPicture !== null) { ?>
-                                    <?= Html::tag($sTag, '', [
-                                        'class' => [
-                                            'widget-element-icon',
-                                            'intec-image-effect'
-                                        ],
-                                        'data' => [
-                                            'lazyload-use' => $arVisual['LAZYLOAD']['USE'] ? 'true' : 'false',
-                                            'original' => $arVisual['LAZYLOAD']['USE'] ? $sPicture : null
-                                        ],
-                                        'style' => [
-                                            'background-image' => !$arVisual['LAZYLOAD']['USE'] ? 'url(\''.$sPicture.'\')' : null
-                                        ],
-                                        'href' => $sTag === 'a' ? $arItem['DATA']['LINK'] : null
-                                    ]) ?>
-                                <?php } else { ?>
-                                    <div class="widget-element-counter">
-                                        <?= $iCount.'.' ?>
-                                    </div>
-                                <?php } ?>
-                                <?= Html::tag($sTag, $arItem['NAME'], [
-                                    'class' => Html::cssClassFromArray([
-                                        'widget-element-name' => true,
-                                        'intec-cl-text-hover' => $sTag === 'a'
-                                    ], true),
-                                    'href' => $sTag === 'a' ? $arItem['DATA']['LINK'] : null
-                                ]) ?>
-                                <div class="widget-element-description">
-                                    <?= strip_tags($arItem['PREVIEW_TEXT']) ?>
+                    $iCount++;
+
+                ?>
+                    <?= Html::beginTag('div', [
+                        'class' => Html::cssClassFromArray([
+                            'intec-grid-item' => [
+                                $arVisual['COLUMNS'] => true,
+                                '1150-4' => $arVisual['COLUMNS'] >= 5,
+                                '900-3' => $arVisual['COLUMNS'] >= 4,
+                                '750-2' => $arVisual['COLUMNS'] >= 3,
+                                '500-1' => $arVisual['COLUMNS'] >= 2
+                            ]
+                        ], true)
+                    ]) ?>
+                    <div class="widget-element" id="<?= $sAreaId ?>">
+                        <?php if ($sPicture !== null) { ?>
+                            <?= Html::tag($sTag, '', [
+                                'class' => [
+                                    'widget-element-icon',
+                                    'intec-image-effect'
+                                ],
+                                'data' => [
+                                    'lazyload-use' => $arVisual['LAZYLOAD']['USE'] ? 'true' : 'false',
+                                    'original' => $arVisual['LAZYLOAD']['USE'] ? $sPicture : null
+                                ],
+                                'style' => [
+                                    'background-image' => !$arVisual['LAZYLOAD']['USE'] ? 'url(\'' . $sPicture . '\')' : null
+                                ],
+                                'href' => $sTag === 'a' ? $arItem['DATA']['LINK'] : null
+                            ]) ?>
+                        <?php } else { ?>
+                            <div class="widget-element-counter">
+                                <div class="wrapper-widget-element-counter">
+                                    <?= $iCount . '.' ?>
                                 </div>
                             </div>
-                        <?= Html::endTag('div') ?>
-                    <?php } ?>
+                        <?php } ?>
+                        <?= Html::tag($sTag, $arItem['NAME'], [
+                            'class' => Html::cssClassFromArray([
+                                'widget-element-name' => true,
+                                'intec-cl-text-hover' => $sTag === 'a'
+                            ], true),
+                            'href' => $sTag === 'a' ? $arItem['DATA']['LINK'] : null
+                        ]) ?>
+                        <div class="widget-element-description">
+                            <?= strip_tags($arItem['PREVIEW_TEXT']) ?>
+                        </div>
+                    </div>
+                    <?= Html::endTag('div') ?>
+                <?php } ?>
                 <?= Html::endTag('div') ?>
             </div>
         </div>
